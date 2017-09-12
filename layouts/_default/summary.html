@@ -1,6 +1,25 @@
 <article class="single article-{{ .Source.Path | md5 }}">
   <div class="header-wrapper">
-    <a href="{{ .Permalink }}" class="thumbnail" title="{{ .Title }}"></a>
+          <section>
+            
+      
+            {{ $params := .Params }}
+            {{ range $key, $value := $.Site.Taxonomies }}
+            {{ if isset $params $key }}
+            <ul class="p-facts">
+              <li>
+                <header><a href="{{ $.Site.BaseURL }}{{ $key | urlize }}/">{{ $key }}</a></header>
+                <ul>
+                  {{ range (index $params $key) }}
+                  <li><a href="{{ $.Site.BaseURL }}{{ $key | urlize }}/{{ . | urlize }}/">{{ . }}</a></li>
+                  {{ end }}
+                </ul>
+              </li>
+            </ul>
+            {{ end }}
+            {{ end }}
+          </section>
+    <a href="{{ .Permalink }}" class="thumbnail" title="{{ .Title }}"><amp-img src="{{.Params.thumbnail}}" alt="{{ .Title }}" width="100" height="100" layout="responsive"></amp-img></a>
     <header class="article-header">
       <div class="clearfix">
         <h1 class="title">{{ .Title }}</h1>
@@ -15,39 +34,18 @@
       </div>
     </header>
   </div>
-
+<ol class="p-crumb">
+  <li><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></li>
+  {{ with .Section }}
+  <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ $.Site.BaseURL }}{{ . | urlize }}/" itemprop="url"><span itemprop="title">{{ . }}</span></a></li>
+  {{ end }}
+  <li>{{ .Title }}</li>
+</ol>
   {{ partial "share.html" . }}
 
   <div class="article-body">{{ .Content }}</div>
 
   {{ partial "share.html" . }}
 
-  <footer class="article-footer">
-    <section>
-      <ol class="p-crumb">
-        <li><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></li>
-        {{ with .Section }}
-        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ $.Site.BaseURL }}{{ . | urlize }}/" itemprop="url"><span itemprop="title">{{ . }}</span></a></li>
-        {{ end }}
-        <li>{{ .Title }}</li>
-      </ol>
-
-      {{ $params := .Params }}
-      {{ range $key, $value := $.Site.Taxonomies }}
-      {{ if isset $params $key }}
-      <ul class="p-facts">
-        <li>
-          <header><a href="{{ $.Site.BaseURL }}{{ $key | urlize }}/">{{ $key }}</a></header>
-          <ul>
-            {{ range (index $params $key) }}
-            <li><a href="{{ $.Site.BaseURL }}{{ $key | urlize }}/{{ . | urlize }}/">{{ . }}</a></li>
-            {{ end }}
-          </ul>
-        </li>
-      </ul>
-      {{ end }}
-      {{ end }}
-    </section>
-  </footer>
 </article>
 

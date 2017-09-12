@@ -46,21 +46,16 @@ $ git clone https://github.com/dim0627/hugo_theme_aglaus.git
 
 ```
 baseurl = "https://example.com/"
-title = "SiteTitle"
+title = "a Hugo Site with AMP"
 
 googleAnalytics = "UA-XXXXXXXX-XX" # Optional
 
 [params]
   dateformat = "Jan 2, 2006" # Optional
   latestSize = 4 # Optional
-  ampscripts = """ # Optional, scripts for AMP.
-<script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>
-<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
-<script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
-"""
 ```
 
-# Frontmatter example
+# Archtypes Example
 
 ```
 +++
