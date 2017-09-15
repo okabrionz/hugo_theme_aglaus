@@ -1,8 +1,6 @@
 <article class="single article-{{ .Source.Path | md5 }}">
   <div class="header-wrapper">
           <section>
-            
-      
             {{ $params := .Params }}
             {{ range $key, $value := $.Site.Taxonomies }}
             {{ if isset $params $key }}
@@ -34,13 +32,13 @@
       </div>
     </header>
   </div>
-<ol class="p-crumb">
-  <li><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></li>
-  {{ with .Section }}
-  <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ $.Site.BaseURL }}{{ . | urlize }}/" itemprop="url"><span itemprop="title">{{ . }}</span></a></li>
-  {{ end }}
-  <li>{{ .Title }}</li>
-</ol>
+    <ol class="p-crumb">
+      <li><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></li>
+      {{ with .Section }}
+      <li itemscope="" itemtype="https://schema.org/breadcrumb"><a href="{{ $.Site.BaseURL }}{{ . | urlize }}/" itemprop="url"><span itemprop="title">{{ . }}</span></a></li>
+      {{ end }}
+      <li>{{ .Title }}</li>
+    </ol>
   {{ partial "share.html" . }}
 
   <div class="article-body">{{ .Content }}</div>
