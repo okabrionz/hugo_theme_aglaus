@@ -45,8 +45,9 @@ $ git clone https://github.com/dim0627/hugo_theme_aglaus.git
 # `config.toml` example
 
 ```
-baseurl = "https://example.com/"
+baseUrl = "https://example.com/"
 title = "a Hugo Site with AMP"
+theme = "hugo_theme_aglaus"
 
 googleAnalytics = "UA-XXXXXXXX-XX" # Optional
 
