@@ -276,7 +276,6 @@ article .thumbnail {
   display: block;
   background-position: center;
   background-size: cover;
-  background-image: url({{ .Site.BaseURL }}images/default.jpg);
   width: 6rem;
   height: 6rem;
   border-radius: 50%;
