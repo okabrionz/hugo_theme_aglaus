@@ -55,7 +55,7 @@ googleAnalytics = "UA-XXXXXXXX-XX" # Optional
   latestSize = 4 # Optional
 ```
 
-# Archtypes Example
+# Archetypes Example
 
 ```
 +++
